@@ -1,22 +1,19 @@
+from node import Node
 class Stack:
-    class Node:
-        def __init__(self,data):
-            self.data = data
-            self.next = None
             
     def __init__(self):
         self.top = None
         self._size = 0
         
     def push (self,data):
-        new_node = self.Node(data)
+        new_node = Node(data)
         new_node.next = self.top
         self.top = new_node
         self._size +=1
         
     def pop(self):
         if self.is_empty():
-            raise IndexError("mal")
+            raise IndexError("Stack empty")
         pop_node =self.top
         self.top=self.top.next
         self._size -=1
@@ -24,7 +21,7 @@ class Stack:
         
     def peek(self):
         if self.is_empty():
-            raise IndexError("mal")
+            raise IndexError("Stack empty")
         return self.top.data
     
     
@@ -40,18 +37,6 @@ class Stack:
         else:
             current_node = self.top
             while current_node is not None:
-                print(current_node.data, end=" -> ")
+                print(current_node.data)
                 current_node = current_node.next
-            print("None") 
-    
-class Test:
-    stack = Stack()
-    stack.push(10)
-    stack.push(20)
-    stack.push(30)
-    
-    stack.print_stack()
-    print(f"Last attached [{stack.peek()}]")
-    print(f"Poped [{stack.pop()}]")        
-    print(f"Size [{stack.size()}]")
-    print(f"Empty? [{stack.is_empty()}]")
+ 
