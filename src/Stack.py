@@ -34,14 +34,24 @@ class Stack:
     def size(self):
         return self._size
     
+    def print_stack(self):
+        if self.is_empty():
+            print("La pila está vacía")
+        else:
+            current_node = self.top
+            while current_node is not None:
+                print(current_node.data, end=" -> ")
+                current_node = current_node.next
+            print("None") 
+    
 class Test:
     stack = Stack()
     stack.push(10)
     stack.push(20)
     stack.push(30)
     
-
-    print("ultimo=",stack.peek())
-    print("borrado=",stack.pop())        
-    print("tam = ",stack.size())
-    print("vacio¿? =",stack.is_empty())
+    stack.print_stack()
+    print(f"Last attached [{stack.peek()}]")
+    print(f"Poped [{stack.pop()}]")        
+    print(f"Size [{stack.size()}]")
+    print(f"Empty? [{stack.is_empty()}]")
